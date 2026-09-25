@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adriana Van Den Dooren | Perfil - 200 - OK</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="brand">
+        <span class="tech-font brand-name">200 - OK</span>
+      </div>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="bitacora.html">Bitácora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container profile-page">
+    <div style="margin: 20px 0;">
+      <a href="index.html" class="btn-back">&larr; Volver al equipo</a>
+    </div>
+
+    <section class="profile-header">
+      <div class="profile-avatar-container">
+        <img src="img/avdd/adri_foto.webp" alt="Foto de Adriana Van Den Dooren" class="profile-avatar">
+      </div>
+      <div class="profile-basic-info">
+        <h1 class="highlight">Adriana Van Den Dooren</h1>
+        <p class="tech-font"><strong>Ciudad:</strong> San Miguel de Tucumán</p>
+        <p class="tech-font"><strong>Edad:</strong> 57 años</p>
+        <p class="tech-font"><strong>Correo:</strong> <a href="mailto:adrianavdd.clases@gmail.com">adrianavdd.clases@gmail.com</a></p>
+      </div>
+    </section>
+
+    <section class="profile-body" aria-label="Información personal">
+      <div class="profile-card">
+        <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Habilidades</h2>
+        <ul class="skills-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Inteligencia artificial</li>
+          <li>Docencia</li>
+        </ul>
+      </div>
+
+      <div class="profile-card">
+        <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Películas favoritas</h2>
+        <ol class="favorites-list">
+          <li class="movie-item" data-movie="alguien-cede">Alguien tiene que ceder</li>
+          <li class="movie-item" data-movie="alien">Alien, el octavo pasajero</li>
+          <li class="movie-item" data-movie="terminator">Terminator</li>
+        </ol>
+      </div>
+
+      <div class="profile-card">
+        <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Discos favoritos</h2>
+        <ol class="favorites-list" style="list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 10px;"><img src="img/avdd/musica/air_supply_greatest_hits.webp" alt="Portada de Air Supply Greatest Hits" class="list-thumbnail"> Greatest Hits (Air Supply)</li>
+          <li style="margin-bottom: 10px;"><img src="img/avdd/musica/bon_jovi_forever-portada.webp" alt="Portada de Forever de Bon Jovi" class="list-thumbnail"> Forever (Bon Jovi)</li>
+          <li style="margin-bottom: 10px;"><img src="img/avdd/musica/nana_mouskouri_libertad.webp" alt="Portada de Libertad de Nana Mouskouri" class="list-thumbnail"> Libertad (Nana Mouskouri)</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="profile-interactive" aria-labelledby="interactive-title">
+      <h2 id="interactive-title" class="section-title" style="text-align: left; font-size: 1.4rem;">Ficha interactiva de películas</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">
+        Selecciona una película de la lista para consultar sus datos.
+      </p>
+
+      <div id="movieModal" class="modal-hidden" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <button class="close-btn" type="button" aria-label="Cerrar ficha" style="border: 0; background: transparent; padding: 0; line-height: 1;">&times;</button>
+          <div class="modal-body">
+            <img id="modal-image" src="" alt="" class="modal-poster" style="display: none;">
+            <div>
+              <h2 id="modal-title" style="color: var(--sky-blue); margin-bottom: 10px; margin-top: 0;"></h2>
+              <p><strong>Año:</strong> <span id="modal-year" class="tech-font"></span></p>
+              <p><strong>Dirección:</strong> <span id="modal-director" class="tech-font"></span></p>
+              <p style="margin-top: 10px;"><strong>Sinopsis:</strong> <span id="modal-synopsis" style="color: var(--text-muted);"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Equipo <strong>200 - OK</strong>. Proyecto TP1 - Desarrollo de Sistemas Web Front-End.</p>
+    </div>
+  </footer>
+
+  <script src="js/perfil-3.js"></script>
+</body>
+</html>
