@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
-    // LÓGICA DE PERFILES: Interactividad dinámica obligatoria
+    // PERFIL 2 - ORLANDO SPOSTO
+    // Función dinámica: Modal interactivo para películas favoritas
     // ---------------------------------------------------------
-    console.log("Script de perfiles cargado correctamente.");
-
-    // --- Lógica del Perfil 3 (Orlando Sposto): Modal de Películas ---
     const movieItems = document.querySelectorAll('.movie-item');
     const modal = document.getElementById('movieModal');
     
-    // Solo ejecutamos esto si estamos en la página que tiene el modal (perfil-3)
     if (modal && movieItems.length > 0) {
         const modalTitle = document.getElementById('modal-title');
         const modalDirector = document.getElementById('modal-director');
@@ -83,4 +80,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
