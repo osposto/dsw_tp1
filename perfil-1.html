@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guillermo Escobar | Perfil - 200 - OK</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navegación Principal -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="brand">
+        <span class="tech-font brand-name">200 - OK</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="bitacora.html">Bitácora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container profile-page">
+    
+    <!-- Botón volver integrado -->
+    <div style="margin: 20px 0;">
+      <a href="index.html" class="btn-back">&larr; Volver al equipo</a>
+    </div>
+
+    <!-- Encabezado del Perfil -->
+    <section class="profile-header">
+      <div class="profile-avatar-container">
+        <img src="img/gescobar/foto_perfil.webp" alt="Avatar de Guillermo Escobar" class="profile-avatar">
+      </div>
+      <div class="profile-basic-info">
+        <h1 class="highlight">Guillermo Escobar</h1>
+        <p class="tech-font"><strong>Ciudad:</strong> Merlo Buenos Aires</p>
+        <p class="tech-font"><strong>Edad:</strong> 43 años</p>
+        <p class="tech-font"><strong>Correo:</strong> <a href="mailto:gescobar@gmail.com">gescobar@gmail.com</a></p>
+      </div>
+    </section>
+
+    <!-- Cuerpo del Perfil -->
+    <section class="profile-body">
+      
+      <!-- Habilidades -->
+      <div class="profile-card">
+        <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Habilidades</h2>
+        <ul class="skills-list">
+          <li>Redes</li>
+          <li>Electronica</li>
+          <li>Programación</li>
+        </ul>
+      </div>
+
+      <!-- Películas -->
+      <div class="profile-card">
+        <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Películas Favoritas</h2>
+        <ol class="favorites-list">
+          <!-- Agrego la clase movie-item y data-movie para la lógica de JavaScript -->
+          <li class="movie-item" data-movie="depredador">Depredador</li>
+          <li class="movie-item" data-movie="johnwick">John Wick</li>
+          <li class="movie-item" data-movie="prometheus">Prometheus</li>
+        </ol>
+      </div>
+
+      <!-- Discos -->
+      <div class="profile-card">
+        <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Discos Favoritos</h2>
+        <ol class="favorites-list" style="list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 10px;"><img src="img/gescobar/musica/garymoore.webp" alt="Gary Moore" class="list-thumbnail"> Gary Moore</li>
+          <li style="margin-bottom: 10px;"><img src="img/gescobar/musica/ratablanca.webp" alt="Rata Blanca" class="list-thumbnail"> Rata Blanca</li>
+          <li style="margin-bottom: 10px;"><img src="img/gescobar/musica/warcry.webp" alt="War Cry" class="list-thumbnail"> War Cry</li>
+        </ol>
+      </div>
+
+    </section>
+
+    <!-- Zona Interactiva (Requisito de JavaScript) -->
+    <section class="profile-interactive">
+      <h2 class="section-title" style="text-align: left; font-size: 1.4rem;">Ficha Interactiva de Películas</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">
+        Haz clic en cualquiera de mis películas favoritas arriba para ver más detalles.
+      </p>
+      
+      <!-- Modal interactivo (Oculto por defecto) -->
+      <div id="movieModal" class="modal-hidden">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <div class="modal-body">
+            <!-- Imagen del póster que se inyectará desde JS -->
+            <img id="modal-image" src="" alt="Póster de la película" class="modal-poster" style="display: none;">
+            <div>
+              <h2 id="modal-title" style="color: var(--sky-blue); margin-bottom: 10px; margin-top: 0;">Título</h2>
+              <p><strong>Director:</strong> <span id="modal-director" class="tech-font"></span></p>
+              <p style="margin-top: 10px;"><strong>Sinopsis:</strong> <span id="modal-synopsis" style="color: var(--text-muted);"></span></p>
+              <blockquote id="modal-quote" style="margin-top: 15px; font-style: italic; border-left: 3px solid var(--emerald); padding-left: 10px; color: var(--text-muted);"></blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Equipo <strong>200 - OK</strong>. Proyecto TP1 - Desarrollo de Sistemas Web Front-End.</p>
+    </div>
+  </footer>
+
+  <script src="js/perfiles.js"></script>
+</body>
+</html>
+
