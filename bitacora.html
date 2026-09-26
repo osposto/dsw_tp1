@@ -29,57 +29,68 @@
     <section class="hero">
       <h1>Bitácora del Proyecto</h1>
       <p class="hero-subtitle">
-        Registro cronológico de decisiones de diseño, problemas técnicos y soluciones aplicadas durante el desarrollo del TP1.
+        Registro cronológico de decisiones de diseño, dificultades técnicas encontradas y soluciones aplicadas durante el desarrollo colaborativo del TP1.
       </p>
     </section>
 
     <!-- Historial de Bitácora -->
     <section style="display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto;">
 
-      <!-- Entrada 1: Estructura y Navegación -->
+      <!-- Entrada 1: Estructura, Navegación y Responsive -->
       <article class="profile-card">
         <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <h2 class="highlight" style="font-size: 1.5rem; margin: 0;">1. Estructura Base y Breakpoints</h2>
-          <span class="tech-font" style="color: var(--text-muted); font-size: 0.9rem;">Fecha: Inicio del Proyecto</span>
+          <h2 class="highlight" style="font-size: 1.5rem; margin: 0;">1. Arquitectura Base, Navegación y Enfoque Mobile-First</h2>
+          <span class="tech-font" style="color: var(--text-muted); font-size: 0.9rem;">Etapa 1 · Estructura y CSS</span>
         </div>
         
         <div style="color: var(--text-main); line-height: 1.7;">
-          <p style="margin-bottom: 15px;"><strong>Decisiones tomadas:</strong> Se optó por una reconstrucción completa ("desde cero") del repositorio para cumplir estrictamente con los requisitos de la rúbrica. Se diseñó un tema oscuro (Dark Theme) centralizado en un archivo <code>styles.css</code> y se implementó una barra de navegación persistente para evitar por completo el uso del botón "Atrás" del navegador.</p>
+          <p style="margin-bottom: 15px;"><strong>Decisiones tomadas:</strong> Se diseñó una arquitectura limpia con un tema oscuro (Dark Theme) centralizado en <code>css/styles.css</code> utilizando variables CSS (Custom Properties) y tipografías de Google Fonts (<em>Inter</em> y <em>JetBrains Mono</em>). Se implementó una barra de navegación superior persistente y botones de retorno explícitos (<code>&larr; Volver al equipo</code>) en todas las páginas individuales para que el usuario nunca dependa del botón "Atrás" del navegador.</p>
           
-          <p style="margin-bottom: 15px;"><strong>Dificultades encontradas:</strong> Asegurar que la grilla del equipo se adaptara perfectamente sin desbordes a los 3 anchos de pantalla exigidos (400px, 900px y 1200px).</p>
+          <p style="margin-bottom: 15px;"><strong>Dificultades encontradas:</strong> Al pasar el equipo de 4 a 3 integrantes, la grilla en resoluciones intermedias (tablets) dejaba la tercera tarjeta desalineada, y al aplicar una regla de centrado (<code>grid-column: 1 / -1</code>) en <code>min-width: 900px</code>, esta se heredaba en cascada hacia pantallas de escritorio (1200px+), forzando dos filas en lugar de una.</p>
           
-          <p><strong>Soluciones aplicadas:</strong> Se utilizó CSS Grid nativo combinado con Media Queries (<code>@media min-width</code>) para reestructurar dinámicamente las columnas: 1 columna en móviles, 2 en tablets y 4 en pantallas de escritorio grandes.</p>
+          <p><strong>Soluciones aplicadas:</strong> Manteniendo el paradigma <strong>Mobile-First</strong> (1 columna base en móviles y mejora en <code>400px</code>), se encapsuló el diseño de 2 columnas más tarjeta inferior centrada dentro de un rango acotado (<code>@media (min-width: 900px) and (max-width: 1199px)</code>). De este modo, al alcanzar el breakpoint de <code>1200px</code>, la grilla pasa limpiamente a <code>repeat(3, 1fr)</code> sin necesidad de sobreescribir o deshacer estilos previos.</p>
         </div>
       </article>
 
-      <!-- Entrada 2: Problemas de Imágenes y JavaScript -->
+      <!-- Entrada 2: Imágenes, Optimización y Buscador en Portada -->
       <article class="profile-card">
         <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <h2 class="highlight" style="font-size: 1.5rem; margin: 0;">2. Optimización de Imágenes e Interactividad JS</h2>
-          <span class="tech-font" style="color: var(--text-muted); font-size: 0.9rem;">Autor: Orlando Sposto</span>
+          <h2 class="highlight" style="font-size: 1.5rem; margin: 0;">2. Optimización Multimedia y Filtro Dinámico en Portada</h2>
+          <span class="tech-font" style="color: var(--text-muted); font-size: 0.9rem;">Etapa 2 · Portada y Recursos</span>
         </div>
         
         <div style="color: var(--text-main); line-height: 1.7;">
-          <p style="margin-bottom: 15px;"><strong>Decisiones tomadas:</strong> Integrar dos funciones dinámicas en JavaScript: un buscador en tiempo real en la portada que filtra por habilidades/nombre, y un modal interactivo en el perfil individual para visualizar pósters, sinopsis y datos de películas favoritas.</p>
+          <p style="margin-bottom: 15px;"><strong>Decisiones tomadas:</strong>En la portada (<code>index.html</code>) se programó con JavaScript (<code>js/main.js</code>) un buscador interactivo en tiempo real que filtra las tarjetas de los integrantes tanto por su nombre como por sus etiquetas de habilidades (<code>data-skills</code>). Asimismo, se estandarizó el uso del formato moderno <code>.webp</code> para todas las fotografías, pósters de cine y portadas de discos.</p>
           
           <p style="margin-bottom: 15px;"><strong>Dificultades encontradas:</strong> 
-          1) Diferentes dimensiones en las imágenes de pósters y portadas de discos rompían la asimetría visual.
-          2) Se experimentó un bucle infinito (infinite loop) en el navegador causado por una etiqueta <code>onerror</code> en una imagen local borrada, lo que bloqueaba la carga de la página.</p>
+          1) Las distintas proporciones de los pósters y portadas de álbumes deformaban las tarjetas.
+          2) Durante las pruebas iniciales sin imágenes locales, un manejador <code>onerror</code> apuntando a un recurso inexistente generó un bucle infinito de recarga en el navegador.</p>
           
           <p><strong>Soluciones aplicadas:</strong> 
-          Para las imágenes, se implementó la propiedad CSS <code>object-fit: cover</code> con dimensiones fijas para recortes perfectos. Para el fallo del bucle, se reemplazaron temporalmente las imágenes rotas con la API externa de <code>ui-avatars.com</code> hasta que las fotos oficiales en formato optimizado <code>.webp</code> fueron re-subidas a la carpeta <code>img/</code>.</p>
+          Se aplicó <code>object-fit: cover</code> con proporciones estandarizadas (1:1 para avatares y álbumes; 2:3 para pósters de películas) y compresión previa a formato <code>.webp</code>, logrando cargas instantáneas y simetría visual en todos los perfiles.</p>
         </div>
       </article>
 
-      <!-- Entrada 3: Trabajo en Equipo (Placeholder) -->
-      <article class="profile-card" style="border-style: dashed; opacity: 0.8;">
-        <div style="border-bottom: 1px dashed var(--border-color); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <h2 style="color: var(--text-muted); font-size: 1.5rem; margin: 0;">3. Integración de Perfiles del Equipo</h2>
-          <span class="tech-font" style="background: var(--border-color); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">Próximamente</span>
+      <!-- Entrada 3: Modularización JS e Integración Colaborativa -->
+      <article class="profile-card">
+        <div style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <h2 class="highlight" style="font-size: 1.5rem; margin: 0;">3. Modularización JavaScript e Integración del Equipo</h2>
+          <span class="tech-font" style="color: var(--text-muted); font-size: 0.9rem;">Etapa 3 · Perfiles y Git</span>
         </div>
         
-        <div style="color: var(--text-muted); line-height: 1.7;">
-          <p><strong>Próximos pasos:</strong> Guillermo y Adriana clonarán el repositorio e implementarán sus tarjetas individuales basándose en <code>plantilla-perfil.html</code>. Este espacio se actualizará con sus decisiones de diseño y las implementaciones de sus respectivos componentes dinámicos en JavaScript.</p>
+        <div style="color: var(--text-main); line-height: 1.7;">
+          <p style="margin-bottom: 15px;"><strong>Decisiones tomadas:</strong> A partir de una plantilla unificada (<code>plantilla-perfil.html</code>), se decidió separar la lógica de JavaScript en archivos independientes por integrante (<code>js/perfil-1.js</code>, <code>js/perfil-2.js</code> y <code>js/perfil-3.js</code>). Cada miembro personalizó su componente interactivo aportando un enfoque técnico propio:</p>
+          <ul style="margin-bottom: 15px; padding-left: 20px; color: var(--text-muted);">
+            <li><strong>Guillermo Escobar (<code>perfil-1</code>):</strong> Implementó animaciones elásticas de entrada y salida (<em>Bounce In / Bounce Out</em>) utilizando la <em>Web Animations API</em> nativa (<code>Element.animate</code> con curvas <code>cubic-bezier</code>).</li>
+            <li><strong>Orlando Sposto (<code>perfil-2</code>):</strong> Desarrolló el sistema de fichas técnicas dinámicas con inyección de pósters, sinopsis y citas célebres destacadas mediante manipulación del DOM.</li>
+            <li><strong>Adriana Van Den Dooren (<code>perfil-3</code>):</strong> Incorporó mejoras avanzadas de accesibilidad web (<em>a11y</em>): navegación completa por teclado (<code>Tab</code>, <code>Enter</code>, <code>Espacio</code> y <code>Escape</code>), atributos <code>ARIA</code> (<code>role="dialog"</code>, <code>aria-hidden</code>) y restablecimiento automático del foco al cerrar el modal.</li>
+          </ul>
+          
+          <p style="margin-bottom: 15px;"><strong>Dificultades encontradas:</strong> 
+          Durante el trabajo simultáneo en Git se produjeron divergencias entre ramas locales y remotas al subir avances en paralelo, además de una corrupción puntual del archivo <code>.git/index</code> en el entorno local.</p>
+          
+          <p><strong>Soluciones aplicadas:</strong> 
+          La separación modular en archivos HTML y JS individuales por integrante permitió fusionar (<code>git merge</code>) los cambios de cada miembro sin conflictos de código. El índice de Git se reconstruyó limpiamente mediante <code>git reset</code> manteniendo intacto todo el historial de commits del equipo.</p>
         </div>
       </article>
 
@@ -94,4 +105,3 @@
 
 </body>
 </html>
-

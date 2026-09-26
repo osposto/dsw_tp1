@@ -9,18 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (searchInput && teamCards.length > 0) {
         
+        // Función auxiliar para ignorar tildes al buscar (ej: "domótica" == "domotica")
+        const normalizeText = (str) => str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
         searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
+            const term = normalizeText(e.target.value.trim());
 
             teamCards.forEach(card => {
                 // Buscamos dentro de los data-skills que agregamos en el HTML
                 const skillsContainer = card.querySelector('.skills');
                 // También buscamos por el nombre
-                const name = card.querySelector('h3').textContent.toLowerCase();
+                const name = normalizeText(card.querySelector('h3').textContent);
                 
                 let skillsText = "";
                 if (skillsContainer) {
-                    skillsText = skillsContainer.getAttribute('data-skills') || "";
+                    skillsText = normalizeText(skillsContainer.getAttribute('data-skills') || "");
                 }
 
                 // Si el término de búsqueda está en el nombre o en los skills, mostramos la tarjeta

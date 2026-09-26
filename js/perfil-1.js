@@ -112,18 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cerrar modal al hacer clic en la "X"
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                modal.classList.remove('modal-active');
-                modal.classList.add('modal-hidden');
-            });
             closeBtn.addEventListener('click', closeModal);
         }
 
         // Cerrar modal al hacer clic fuera de la caja de contenido
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.classList.remove('modal-active');
-                modal.classList.add('modal-hidden');
                 closeModal();
             }
         });
